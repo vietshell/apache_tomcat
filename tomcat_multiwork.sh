@@ -7,6 +7,7 @@
 #
 #Check Install packet
 clear
+thumuc=`pwd`
 sed -i 's/SELINUX=enforing/SELINUX=disabled/g' /etc/selinux/config
 hsp_dir="/var/www/html/hsp_web"
 ro_dir="/root"
@@ -22,7 +23,7 @@ yum -y install httpd httpd-*
 fi
 
 #Install Other Packet
-yum -y install mlocate wget man
+yum -y install mlocate wget man lsof
 
 #download packet apache
 wget http://mirror.nexcess.net/apache/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz
@@ -31,7 +32,8 @@ mv apache-tomcat-7.0.53 $hsp_dir
 cd $hsp_dir
 tar -cvf vwork.tar.gz conf bin logs temp webapps work
 mv $hsp_dir/vwork.tar.gz $ro_dir/vwork.tar.gz
-
+mv $thumuc/vhost.sh /usr/bin/vhost
+chmod +x /usr/bin/vhost
 sed -i 's/\#ServerName www.example.com:80/ServerName hsp-vn.com:80/g' /etc/httpd/conf/httpd.conf
 sed -i 's/\#NameVirtualHost/NameVirtualHost/g' /etc/httpd/conf/httpd.conf
 sed -i 's/ServerTokens OS/ServerTokens Prod/g' /etc/httpd/conf/httpd.conf

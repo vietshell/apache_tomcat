@@ -5,7 +5,6 @@
 #
 #  Created by HSP SI Viet Nam on 5/9/14.
 #
-clear
 
 tenshell=`echo $0`
 echo "Script Chi Dung Rieng Cho Da Nang"
