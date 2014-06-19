@@ -26,9 +26,9 @@ fi
 yum -y install mlocate wget man lsof
 
 #download packet apache
-wget http://mirror.nexcess.net/apache/tomcat/tomcat-7/v7.0.53/bin/apache-tomcat-7.0.53.tar.gz
-tar -xvf apache-tomcat-7.0.53.tar.gz
-mv apache-tomcat-7.0.53 $hsp_dir
+wget http://mirror.nexcess.net/apache/tomcat/tomcat-7/v7.0.54/bin/apache-tomcat-7.0.54.tar.gz
+tar -xvf apache-tomcat-7.0.54.tar.gz
+mv apache-tomcat-7.0.54 $hsp_dir
 cd $hsp_dir
 tar -cvf vwork.tar.gz conf bin logs temp webapps work
 mv $hsp_dir/vwork.tar.gz $ro_dir/vwork.tar.gz
@@ -38,7 +38,7 @@ sed -i 's/\#ServerName www.example.com:80/ServerName hsp-vn.com:80/g' /etc/httpd
 sed -i 's/\#NameVirtualHost/NameVirtualHost/g' /etc/httpd/conf/httpd.conf
 sed -i 's/ServerTokens OS/ServerTokens Prod/g' /etc/httpd/conf/httpd.conf
 sed -i 's/KeepAlive Off/KeepAlive On/g' /etc/httpd/conf/httpd.conf
-sed -i 's/AllowOverride None/AllowOverride All'
+sed -i 's/AllowOverride None/AllowOverride All' /etc/httpd/conf/httpd.conf
 
 #Restart service httpd
 /etc/init.d/httpd restart
