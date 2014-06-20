@@ -38,7 +38,7 @@ sed -i 's/\#ServerName www.example.com:80/ServerName hsp-vn.com:80/g' /etc/httpd
 sed -i 's/\#NameVirtualHost/NameVirtualHost/g' /etc/httpd/conf/httpd.conf
 sed -i 's/ServerTokens OS/ServerTokens Prod/g' /etc/httpd/conf/httpd.conf
 sed -i 's/KeepAlive Off/KeepAlive On/g' /etc/httpd/conf/httpd.conf
-sed -i 's/AllowOverride None/AllowOverride All' /etc/httpd/conf/httpd.conf
+sed -i 's/AllowOverride None/AllowOverride All/g' /etc/httpd/conf/httpd.conf
 
 #Restart service httpd
 /etc/init.d/httpd restart
